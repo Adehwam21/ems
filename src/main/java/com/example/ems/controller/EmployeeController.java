@@ -1,6 +1,5 @@
 package com.example.ems.controller;
 
-import java.net.http.HttpResponse;
 import java.util.List;
 
 import com.example.ems.model.Employee;
@@ -29,23 +28,23 @@ public class EmployeeController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<ApiResponse> getAllEmployees(){
-        List<Employee> employees =  employeeService.getAllEmployees();
+    public ResponseEntity<ApiResponse> getAllEmployees() {
+        List<Employee> employees = employeeService.getAllEmployees();
         return ResponseEntity.ok(new ApiResponse(200, "Employees found!", employees));
     }
 
-    @GetMapping(path= "/employee/{employeeId}")
-    public ResponseEntity<ApiResponse> getEmployeeById(@PathVariable Long employeeId){
+    @GetMapping(path = "/employee/")
+    public ResponseEntity<ApiResponse> getEmployeeById(@RequestParam Long employeeId) {
         try {
             Employee employee = employeeService.getEmployeeById(employeeId);
-            return  ResponseEntity.ok(new ApiResponse(200, "Employee found!", employee));
+            return ResponseEntity.ok(new ApiResponse(200, "Employee found!", employee));
         } catch (Exception e) {
             return ResponseEntity.status(500).body(new ApiResponse(500, e.getMessage(), null));
         }
     }
 
-    @PostMapping(path= "/add")
-    public ResponseEntity<ApiResponse> addEmployee(@RequestBody AddEmployeeRequest employeeData){
+    @PostMapping(path = "/employee/add")
+    public ResponseEntity<ApiResponse> addEmployee(@RequestBody AddEmployeeRequest employeeData) {
         try {
             Employee employee = employeeService.addEmployee(employeeData);
             return ResponseEntity.ok(new ApiResponse(200, "Employee added successfully!", employee));
@@ -54,19 +53,19 @@ public class EmployeeController {
         }
     }
 
-    @PutMapping(path="/employee/update/{employeeId}")
-    public ResponseEntity<ApiResponse> updateEmployee(@RequestBody UpdateEmployeeRequest newEmployeeData, @PathVariable Long employeeId){
+    @PutMapping(path = "/employee/update/")
+    public ResponseEntity<ApiResponse> updateEmployee(@RequestBody UpdateEmployeeRequest newEmployeeData,
+            @RequestParam Long employeeId) {
         try {
             Employee updatedEmployee = employeeService.updateEmployeeById(newEmployeeData, employeeId);
             return ResponseEntity.ok(new ApiResponse(201, "Added employee successfully", updatedEmployee));
         } catch (Exception e) {
             return ResponseEntity.status(201).body(new ApiResponse(201, e.getMessage(), null));
         }
-
     }
 
-    @DeleteMapping(path="/employee/delete/{employeeId}")
-    public ResponseEntity<ApiResponse> deleteEmployee(@PathVariable Long employeeId){
+    @DeleteMapping(path = "/employee/delete/")
+    public ResponseEntity<ApiResponse> deleteEmployee(@RequestParam Long employeeId) {
         try {
             employeeService.deleteEmployeeById(employeeId);
             return ResponseEntity.ok(new ApiResponse(200, "Employee deleted successfully", null));
