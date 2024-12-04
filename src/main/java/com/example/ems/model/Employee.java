@@ -1,20 +1,3 @@
-// package com.example.demo.employee;
-
-// import lombok.Data;
-// import lombok.NoArgsConstructor;
-// import lombok.AllArgsConstructor;
-
-// @Data
-// @NoArgsConstructor
-// @AllArgsConstructor
-// public class Employee {
-//     private String firstName;
-//     private String lastName;
-//     private String email;
-//     private String title;
-//     private String employeeId;
-// }
-
 package com.example.ems.model;
 
 import jakarta.persistence.Entity;
@@ -41,7 +24,6 @@ public class Employee {
     private String email;
     private String title;
 
-    // Parameterized constructor
     public Employee(String firstName, String lastName, String email, String title) {
         this.firstName = firstName;
         this.lastName = lastName;
