@@ -7,22 +7,14 @@ import com.example.ems.request.AddEmployeeRequest;
 import com.example.ems.request.UpdateEmployeeRequest;
 import com.example.ems.response.ApiResponse;
 import com.example.ems.service.EmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "${api.prefix}/employees")
 public class EmployeeController {
-    // Constant to include the employeeService class in employee controller
     private final EmployeeService employeeService;
 
-    // Constructor to set the attribute of the employee controller class to an
-    // instance of the employeeService class, this is achieved by the annotation
-    // @Autowired.
-    // Dependency injection
-
-    @Autowired
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
@@ -72,7 +64,5 @@ public class EmployeeController {
         } catch (Exception e) {
             return ResponseEntity.status(500).body(new ApiResponse(500, e.getMessage(), null));
         }
-
     }
-
 }
