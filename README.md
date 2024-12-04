@@ -6,6 +6,18 @@ A simple CRUD web service built with Java Spring Boot and MySQL serving as the d
 
 ## Endpoints
 
+### Get Employee
+
+**Method:** `GET`  
+**Endpoint:** `/api/v1/employees/employee/?employeeId={id}`  
+**Description:** Fetches the employee whose ID is passed as a query parameter.
+
+#### Query Parameters
+
+- `employeeId` - The ID of the employee to delete.
+
+---
+
 ### Add Employee
 
 **Method:** `POST`  
