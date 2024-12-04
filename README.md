@@ -65,8 +65,8 @@ A simple CRUD web service built with Java Spring Boot and MySQL serving as the d
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone https://github.com/Adehwam21/ems.git
+   cd ems
    ```
 
 2. Set up MySQL:
@@ -86,8 +86,8 @@ A simple CRUD web service built with Java Spring Boot and MySQL serving as the d
 
 ## Technologies Used
 
-- **Backend:** Java (Spring Boot)
-- **Database:** MySQL
+- **Backend:** Java 17+ (Spring Boot 3.3+)
+- **Database:** MySQL 8.0+
 
 ---
 
